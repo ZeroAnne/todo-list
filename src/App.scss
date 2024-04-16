@@ -1,26 +1,64 @@
 $PrimaryColor: rgb(165, 167, 247);
 $Primary2Color: rgb(131, 132, 221);
-$SecondColor: rgb(175, 175, 185);
+$SecondColor: rgb(186, 186, 227);
 $ThirdColor: rgb(203, 204, 249);
 
-h1,.primarycolor {
-  color: $PrimaryColor;
+html, body {
+  overflow-y: hidden; // 隱藏垂直滾動條
+  height: 100%;
 }
 
-P,h5,h6,.secondcolor{
+h1,
+.primarycolor {
+  color: $PrimaryColor;
+}
+.primary2color {
+  color: $Primary2Color;
+}
+
+P,
+h5,
+h6,
+.secondcolor {
   color: $SecondColor;
 }
 
-.thirdcolor{
+.thirdcolor {
   color: $ThirdColor;
 }
 //cardlist
 .decorative-line-card {
   position: relative;
-  border-left: 10px solid $Primary2Color; 
+  border-left: 10px solid $Primary2Color;
   padding-left: 10px;
 }
+.list-word {
+  font-size: 18px;
+  color: $Primary2Color;
+}
 //btn
-.butn-bg{
+.butn-bg {
   background-color: $Primary2Color;
+}
+//scroll
+.scroll {
+  max-height: 420px; // 調整高度
+  overflow-y: auto;
+  position: relative; 
+  padding-right: 10px; 
+
+  &::-webkit-scrollbar {
+    position: absolute;
+    right: 0;
+  }
+
+  // 自定義滾動條樣式
+  &::-webkit-scrollbar {
+    width: 10px; // 滾動條寬度
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $SecondColor; // 滾動條主體顏色
+    border-radius: 10px; // 圓角
+  }
 }
