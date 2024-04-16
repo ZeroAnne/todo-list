@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
-import Card from 'react-bootstrap/Card';
-import { X } from 'react-bootstrap-icons';
 import '../App.scss';
+//bootstrap
+import Card from 'react-bootstrap/Card';
+//icon
+import { X } from 'react-bootstrap-icons';
+//引用勾子Hooks
+import { useList } from '../hooks/use-list'
+
+
 
 export default function ListCard() {
+  //Hooks
+  const {
+    allThings,
+  } = useList()
   // 勾選刪除判斷
-  const [isChecked, setIsChecked] = useState(false); 
- 
+  const [isChecked, setIsChecked] = useState(false);
   return (
     <>
+    {}
       <div className="mt-3">
         <Card className='decorative-line-card'>
           <Card.Body className='d-flex justify-content-between align-items-center'>
