@@ -1,0 +1,26 @@
+$PrimaryColor: rgb(165, 167, 247);
+$Primary2Color: rgb(131, 132, 221);
+$SecondColor: rgb(175, 175, 185);
+$ThirdColor: rgb(203, 204, 249);
+
+h1,.primarycolor {
+  color: $PrimaryColor;
+}
+
+P,h5,h6,.secondcolor{
+  color: $SecondColor;
+}
+
+.thirdcolor{
+  color: $ThirdColor;
+}
+//cardlist
+.decorative-line-card {
+  position: relative;
+  border-left: 10px solid $Primary2Color; 
+  padding-left: 10px;
+}
+//btn
+.butn-bg{
+  background-color: $Primary2Color;
+}
