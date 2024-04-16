@@ -20,7 +20,7 @@ export default function ListAdd() {
     } = useList()
     return (
         <>
-            <div className='container fixed-bottom py-3'>
+            <div className='container fixed-bottom py-2'>
                 <div className='d-flex justify-content-end'>
                     <ListSorted />
                 </div>

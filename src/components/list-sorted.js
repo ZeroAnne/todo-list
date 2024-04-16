@@ -10,7 +10,7 @@ export default function ListSorted() {
       } = useList()
   return (
     <>
-        <h6 className='me-1'>Move done things to end?</h6>
+        <h6 className='me-2 text-center'>Move done things to end?</h6>
           <Form>
             <Form.Check
               type="switch"

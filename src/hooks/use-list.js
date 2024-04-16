@@ -58,6 +58,10 @@ export function ListProvider({
         const deleteThings = allThings.filter((item) => item.id !== itemid);
         setAllThings(deleteThings); // 更新狀態
     }
+    //刪除所有事項
+    const handleAllDelete = () => {
+        setAllThings([]);
+    }
 
     //事項排序
     const sortedThings = allThings.sort((a, b) => {
@@ -78,6 +82,7 @@ export function ListProvider({
                 handleButtonClick,
                 handleCheckboxChange,
                 handleDelete,
+                handleAllDelete,
                 percentLine,
                 sorteded,
                 setSorted,
