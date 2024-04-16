@@ -18,7 +18,7 @@ export default function ListAdd() {
     } = useList()
     return (
         <>
-            <div className='container fixed-bottom bg-white py-3'>
+            <div className='container fixed-bottom py-3'>
                 <h5 className=''>Add to list</h5>
                 <div>
                     <InputGroup className="mb-3 list-word">
@@ -28,7 +28,13 @@ export default function ListAdd() {
                             aria-describedby="basic-addon2"
                             value={inputValue}  // 輸入內容
                             onChange={handleInputChange}
-                            style={{ color: 'rgb(131, 132, 221)', fontSize: "18px" }}
+                            onKeyDown={(event) => {
+                                if (event.key === 'Enter') {
+                                    event.preventDefault(); // 防止表单提交的默认行为
+                                    handleButtonClick(); // 触发添加项目的函数
+                                }
+                            }}
+                        style={{ color: 'rgb(131, 132, 221)', fontSize: "18px" }}
                         />
                         <Button
                             variant="outline-secondary"

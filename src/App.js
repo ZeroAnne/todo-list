@@ -1,11 +1,11 @@
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import React, { useState } from 'react';
-import { Line } from 'rc-progress';
+import React from 'react';
 import Form from 'react-bootstrap/Form';
 //component
 import ListCard from './components/list-card'
 import ListAdd from './components/list-add'
+import ListPercentline from './components/list-percentline'
 
 
 
@@ -19,8 +19,7 @@ function App() {
         <p>Add things to do</p>
         <hr></hr>
         <div className='d-flex my-3'>
-          <h5 style={{margin:"0"}}>50%</h5>
-          <Line percent={50} strokeWidth={2} strokeColor="rgb(165, 167, 247)" className='ms-3' />
+        <ListPercentline/>
         </div>
         <div className='scroll'>
           <ListCard />
@@ -31,7 +30,7 @@ function App() {
           <Form>
             <Form.Check
               type="switch"
-              id="custom-switch"
+              id="switch"
             />
           </Form>
         </div>

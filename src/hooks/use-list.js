@@ -6,16 +6,26 @@ const ListContext = createContext()
 export function ListProvider({
     children
 }) {
-    const [allThings, setAllThings] = useState([{ id: "1", name: "c9", checked: false }]);//顯示清單的所有內容
+    const [allThings, setAllThings] = useState([]);//顯示清單的所有內容
     const [inputValue, setInputValue] = useState('');// 輸入值的狀態
-    const [percentLine , setPercentLine]=useState()
+    const [percentLine , setPercentLine]=useState(0)//進度條狀態
+    
+
+    //監聽事件
     useEffect(() => {
-        
-      }, [percentLine])
+        // 分別計算全部及已勾選數量
+        const totalItems = allThings.length;
+        const completedItems = allThings.filter(item => item.checked).length;
+    
+        // 計算完成百分比
+        const completedPercentage = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
+        setPercentLine(completedPercentage); // 更新進度條狀態
+      }, [allThings]); 
+
     // function 
     //輸入值儲存狀態
     const handleInputChange = (e) => {
-        setInputValue(e.target.value);  // 更新状态
+        setInputValue(e.target.value);  // 更新狀態
     };
 
     //按鈕送出
@@ -60,6 +70,7 @@ export function ListProvider({
                 handleButtonClick,
                 handleCheckboxChange,
                 handleDelete,
+                percentLine,
             }}
         >
             {children}
