@@ -6,6 +6,8 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 //icon
 import { Plus } from 'react-bootstrap-icons';
+//component
+import ListSorted from '../components/list-sorted'
 //引用勾子Hooks
 import { useList } from '../hooks/use-list'
 
@@ -19,6 +21,10 @@ export default function ListAdd() {
     return (
         <>
             <div className='container fixed-bottom py-3'>
+                <div className='d-flex justify-content-end'>
+                    <ListSorted />
+                </div>
+                <hr></hr>
                 <h5 className=''>Add to list</h5>
                 <div>
                     <InputGroup className="mb-3 list-word">
@@ -34,7 +40,7 @@ export default function ListAdd() {
                                     handleButtonClick(); // 触发添加项目的函数
                                 }
                             }}
-                        style={{ color: 'rgb(131, 132, 221)', fontSize: "18px" }}
+                            style={{ color: 'rgb(131, 132, 221)', fontSize: "18px" }}
                         />
                         <Button
                             variant="outline-secondary"

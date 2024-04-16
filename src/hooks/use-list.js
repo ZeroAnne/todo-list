@@ -9,7 +9,7 @@ export function ListProvider({
     const [allThings, setAllThings] = useState([]);//顯示清單的所有內容
     const [inputValue, setInputValue] = useState('');// 輸入值的狀態
     const [percentLine , setPercentLine]=useState(0)//進度條狀態
-    
+    const [sorteded, setSorted] = useState(false);//已完成事項排序開關
 
     //監聽事件
     useEffect(() => {
@@ -30,7 +30,7 @@ export function ListProvider({
 
     //按鈕送出
     const handleButtonClick = () => {
-        // 擴充checkedbox，並為每個項目添加一個基於時間的 ID
+        // 擴充checkedbox，並為每個事項添加一個基於時間的 ID
         const newInput = {
             id: Date.now(), //時間戳ID
             name: inputValue,
@@ -48,16 +48,24 @@ export function ListProvider({
             if (item.id === itemid) {
                 return { ...item, checked: !item.checked };
             }
-            return item; // 不改變其他項目
+            return item; // 不改變其他事項
         });
         setAllThings(updatedThings); // 更新狀態
     };
 
-    //刪除項目
+    //刪除事項
     const handleDelete = (itemid) => {
         const deleteThings = allThings.filter((item) => item.id !== itemid);
         setAllThings(deleteThings); // 更新狀態
     }
+
+    //事項排序
+    const sortedThings = allThings.sort((a, b) => {
+        if (sorteded) {
+          return a.checked ? 1 : -1;
+        }
+        return a.id - b.id;
+      });
 
     return (
         <ListContext.Provider
@@ -71,6 +79,9 @@ export function ListProvider({
                 handleCheckboxChange,
                 handleDelete,
                 percentLine,
+                sorteded,
+                setSorted,
+                sortedThings
             }}
         >
             {children}
