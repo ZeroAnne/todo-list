@@ -5,9 +5,8 @@ import Form from 'react-bootstrap/Form';
 import { useList } from '../hooks/use-list'
 
 export default function ListSorted() {
-    const {
-        setSorted,
-      } = useList()
+    //Hooks
+    const {setSorted} = useList()
   return (
     <>
         <h6 className='me-2 text-center'>Move done things to end?</h6>

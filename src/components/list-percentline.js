@@ -5,9 +5,7 @@ import { useList } from '../hooks/use-list'
 
 export default function ListPercentline() {
     //Hooks
-    const {
-        percentLine,
-    } = useList()
+    const {percentLine} = useList()
     return (
         <>
             <h5 style={{ margin: "0" }}>{percentLine}%</h5>

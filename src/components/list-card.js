@@ -7,8 +7,6 @@ import { X } from 'react-bootstrap-icons';
 //引用勾子Hooks
 import { useList } from '../hooks/use-list'
 
-
-
 export default function ListCard() {
   //Hooks
   const {
@@ -18,10 +16,10 @@ export default function ListCard() {
     sorteded,
     sortedThings
   } = useList()
-  // 勾選刪除判斷
-  // const [isChecked, setIsChecked] = useState(false);
+
   return (
     <>
+    {/* 判斷排序開關 */}
     {sorteded ? sortedThings.map((v, i) => (
       <div key={i}>
         <div className="mt-3">

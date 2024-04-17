@@ -1,11 +1,9 @@
 import React, { createContext, useState, useContext,useEffect } from 'react'
-
 //建立context
 const ListContext = createContext()
 
-export function ListProvider({
-    children
-}) {
+export function ListProvider({children}) {
+
     const [allThings, setAllThings] = useState([]);//顯示清單的所有內容
     const [inputValue, setInputValue] = useState('');// 輸入值的狀態
     const [percentLine , setPercentLine]=useState(0)//進度條狀態
@@ -22,7 +20,7 @@ export function ListProvider({
         setPercentLine(completedPercentage); // 更新進度條狀態
       }, [allThings]); 
 
-    // function 
+    //function 
     //輸入值儲存狀態
     const handleInputChange = (e) => {
         setInputValue(e.target.value);  // 更新狀態

@@ -22,7 +22,7 @@ export default function ListAdd() {
         <>
             <div className='container fixed-bottom py-2'>
                 <div className='d-flex justify-content-end'>
-                    <ListSorted />
+                    <ListSorted />{/* 排序開關 */}
                 </div>
                 <hr></hr>
                 <h5 className=''>Add to list</h5>
@@ -35,9 +35,10 @@ export default function ListAdd() {
                             value={inputValue}  // 輸入內容
                             onChange={handleInputChange}
                             onKeyDown={(event) => {
+                                //按Enter也可送出
                                 if (event.key === 'Enter') {
-                                    event.preventDefault(); // 防止表单提交的默认行为
-                                    handleButtonClick(); // 触发添加项目的函数
+                                    event.preventDefault(); // 防止默認行為
+                                    handleButtonClick(); // 觸發Enter點擊
                                 }
                             }}
                             style={{ color: 'rgb(131, 132, 221)', fontSize: "18px" }}

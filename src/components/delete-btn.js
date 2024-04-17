@@ -5,15 +5,14 @@ import { X } from 'react-bootstrap-icons';
 import { useList } from '../hooks/use-list'
 
 export default function DeleteBtn() {
-  const {
-    handleAllDelete,
-  } = useList()
+  //Hooks
+  const { handleAllDelete } = useList()
   return (
     <>
-                <button className='btn d-flex align-items-center' onClick={handleAllDelete}>
-            <X className='secondcolor' size={28} />
-            <p style={{ margin: "0" }}>Delete all things</p>
-          </button>
+      <button className='btn d-flex align-items-center' onClick={handleAllDelete}>
+        <X className='secondcolor' size={28} />
+        <p style={{ margin: "0" }}>Delete all things</p>
+      </button>
     </>
   )
 }
