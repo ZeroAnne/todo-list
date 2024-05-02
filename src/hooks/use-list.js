@@ -17,7 +17,7 @@ export function ListProvider({children}) {
     
         // 計算完成百分比
         const completedPercentage = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
-        setPercentLine(completedPercentage); // 更新進度條狀態
+        setPercentLine(completedPercentage); // 更新進度條狀態//四捨五入
       }, [allThings]); 
 
     //function 
@@ -63,7 +63,7 @@ export function ListProvider({children}) {
 
     //事項排序
     const sortedThings = allThings.sort((a, b) => {
-        if (sorteded) {
+        if (sorteded && allThings.some(item => item.checked)) {
           return a.checked ? 1 : -1;
         }
         return a.id - b.id;
