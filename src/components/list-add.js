@@ -9,8 +9,6 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { Plus } from "react-bootstrap-icons";
 //component
 import ListSorted from "../components/list-sorted";
-//引用勾子Hooks
-import { useList } from "../hooks/use-list";
 
 //redux action
 import { addTodo, selectTodo } from "../redux/todoSlice";
@@ -18,9 +16,11 @@ import { addTodo, selectTodo } from "../redux/todoSlice";
 export default function ListAdd() {
   const dispatch = useDispatch();
   const todos = useSelector(selectTodo);
-  //Hooks
-  const { inputValue, handleInputChange, setInputValue } = useList();
+  const [inputValue, setInputValue] = useState(""); // 確保 inputValue 仍然由 state 處理
 
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
   const handleButtonClick = () => {
     if (inputValue.trim()) {
       const newTodo = { id: todos.length + 1, name: inputValue };

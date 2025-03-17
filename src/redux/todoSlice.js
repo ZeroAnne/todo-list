@@ -13,12 +13,24 @@ const initialState = {
     checked: false,
   })),
   percent: 0,
+  sorted: false, // 開關狀態，但不處理排序
 };
 
+//function
 const calculatePercent = (list) => {
   const totalItems = list.length;
   const completedItems = list.filter((item) => item.checked).length;
   return totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
+};
+
+//handle stored function
+const getSortedTodoList = (list, sorted) => {
+  if (sorted) {
+    // 勾選的排後面
+    return [...list].sort((a, b) => (a.checked ? 1 : -1));
+  }
+  // 預設依 id 排序
+  return [...list].sort((a, b) => b.id - a.id);
 };
 
 export const todoSlice = createSlice({
@@ -29,7 +41,6 @@ export const todoSlice = createSlice({
     addTodo: (state, action) => {
       state.todolist.push({ ...action.payload, checked: false });
       state.percent = calculatePercent(state.todolist);
-      console.log(state.todolist);
     },
     //切換勾選狀態
     toggleChecked: (state, action) => {
@@ -38,7 +49,6 @@ export const todoSlice = createSlice({
         todo.checked = !todo.checked;
       }
       state.percent = calculatePercent(state.todolist); // 更新進度條
-      console.log(todo);
     },
     //刪除項目
     deleteTodo: (state, action) => {
@@ -52,12 +62,18 @@ export const todoSlice = createSlice({
       state.todolist = [];
       state.percent = 0; // 清空進度條
     },
+    //事項排序
+    sortedTodo: (state, action) => {
+      state.sorted = action.payload; // 只記錄開關狀態，不改 todolist
+    },
   },
 });
 
-export const { addTodo, toggleChecked, deleteTodo, deleteAlltodo } =
+export const { addTodo, toggleChecked, deleteTodo, deleteAlltodo, sortedTodo } =
   todoSlice.actions; //取用的方法
-export const selectTodo = (state) => state.todo.todolist; //取用資料
+export const selectTodo = (state) =>
+  getSortedTodoList(state.todo.todolist, state.todo.sorted); //取用資料
+
 export const selectPercent = (state) => state.todo.percent; //取用資料
 
 export default todoSlice.reducer;
