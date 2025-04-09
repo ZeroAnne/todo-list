@@ -1,69 +1,81 @@
-$PrimaryColor: rgb(165, 167, 247);
-$Primary2Color: rgb(131, 132, 221);
-$SecondColor: rgb(174, 174, 227);
-$ThirdColor: rgb(203, 204, 249);
+:root {
+  --PrimaryColor: rgb(165, 167, 247);
+  --Primary2Color: rgb(131, 132, 221);
+  --SecondColor: rgb(174, 174, 227);
+  --SecondColor2:rgba(136, 38, 255, 0.537);
+  --ThirdColor: rgb(203, 204, 249);
+  --TimeColor:rgb(255, 255, 255);
+}
 
+[data-theme="orange"] {
+  --PrimaryColor: rgb(248, 188, 162);
+  --Primary2Color: rgb(228, 76, 30);
+  --SecondColor: rgb(255, 255, 255);
+  --SecondColor2:rgba(255, 154, 38, 0.537);
+  --ThirdColor: rgb(255, 174, 98);
+  --TimeColor:rgb(255, 255, 255);
+}
 html, body {
-  overflow-y: hidden; // 隱藏垂直滾動條
+  overflow-y: hidden;
   height: 100%;
   height: 100vh; 
   margin: 0; 
-  background: linear-gradient(to bottom left, #dae7f4, #e4d5ef); 
+  background: linear-gradient(to bottom left, var(--SecondColor), var(--ThirdColor)); 
   background-repeat: no-repeat; 
   background-attachment: fixed; 
 }
 
+// 使用 CSS 變數取代 SCSS 變數
 h1,
 .primarycolor {
-  color: $PrimaryColor;
+  color: var(--PrimaryColor);
 }
 .primary2color {
-  color: $Primary2Color;
+  color: var(--Primary2Color);
 }
 
-P,
+p,
 h5,
 h6,
-.secondcolor {
-  color: $SecondColor;
+.secondcolor2 {
+  color: var(--SecondColor2);
 }
 
 .thirdcolor {
-  color: $ThirdColor;
+  color: var(--ThirdColor);
 }
-//cardlist
+
+// cardlistsecondcolor2
 .decorative-line-card {
   position: relative;
-  border-left: 10px solid $Primary2Color;
+  border-left: 10px solid var(--Primary2Color);
   padding-left: 10px;
 }
 .list-word {
   font-size: 18px;
-  color: $Primary2Color;
+  color: var(--Primary2Color);
 }
-//btn
+
+// btn
 .butn-bg {
-  background-color: $Primary2Color;
+  background-color: var(--Primary2Color);
 }
-//scroll
+
+// scroll
 .scroll {
-  max-height: 330px; // 調整高度
+  max-height: 330px;
   overflow-y: auto;
   position: relative; 
   padding-right: 10px; 
 
-  &::-webkit-scrollbar {
-    position: absolute;
-    right: 0;
-  }
-
-  // 滾動條樣式
-  &::-webkit-scrollbar {
-    width: 10px; // 滾動條寬度
-  }
-
   &::-webkit-scrollbar-thumb {
-    background: $SecondColor; 
+    background: var(--SecondColor); 
     border-radius: 10px;
   }
+}
+
+//time
+.time{
+  color: var(--TimeColor);
+  font-size: 100px;
 }

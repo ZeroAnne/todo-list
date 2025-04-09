@@ -16,7 +16,7 @@ const initialState = {
   sorted: false, // 開關狀態，但不處理排序
 };
 
-//function
+//function 進度條計算
 const calculatePercent = (list) => {
   const totalItems = list.length;
   const completedItems = list.filter((item) => item.checked).length;
